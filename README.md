@@ -1,6 +1,7 @@
 # Install
 
 react bootstrap,
+bootstrap,
 firebase,
 toastify,
 redux-toolkit,
