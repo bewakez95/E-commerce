@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomInput from "./CustomInput";
 import { Button, Form } from "react-bootstrap";
 import Header from "../../components/layouts/Header";
 import Footer from "../../components/layouts/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInAdmin } from "../../redux/auth/userAction";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.userInfo);
+  useEffect(() => {
+    if (user.uid) {
+      navigate("/dashboard");
+    }
+  }, [user]);
+
   const handleOnChange = (e) => {
     // console.log(e);
     const { name, value } = e.target;
@@ -14,6 +26,7 @@ function LoginPage() {
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(SignInAdmin(form));
     console.log(form);
   };
   const input = [

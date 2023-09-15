@@ -30,11 +30,11 @@ function Sidebar() {
   ];
   return (
     <nav className="main bg-dark text-white" expand="lg">
-      <div className="text-center">Admin Account</div>
+      <div className="text-center p-4">Admin Account</div>
       <hr />
       <ul className="list-unstyled">
         {sidelink.map(({ label, path }) => (
-          <li className="ms-2 py-2">
+          <li className="ms-5 py-2">
             <Link className="nav-link" to={path}>
               {label}
             </Link>
@@ -42,12 +42,12 @@ function Sidebar() {
         ))}
         <hr />
         <li>
-          <Link className="nav-link" to="/profile">
+          <Link className="nav-link ms-5 py-2" to="/profile">
             Profile
           </Link>
         </li>
         <li>
-          <Link className="nav-link" to="/register">
+          <Link className="nav-link ms-5 py-2" to="/register">
             Register
           </Link>
         </li>

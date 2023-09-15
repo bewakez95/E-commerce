@@ -18,8 +18,19 @@ import Reviews from "./pages/reviews/Reviews";
 import AdminLayout from "./components/layouts/AdminLayout";
 import Orders from "./pages/orders/Orders";
 import ErrorPage from "./pages/ErrorPage";
+import PrivateRoute from "./components/layouts/privateRoute/PrivateRoute";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { getUserInfo } from "./redux/auth/userAction";
+import { auth } from "./firebase-config";
 
 function App() {
+  const dispatch = useDispatch();
+  onAuthStateChanged(auth, (user) => {
+    if (user?.uid) {
+      dispatch(getUserInfo(user.uid));
+    }
+  });
   return (
     <div>
       <Routes>
@@ -29,14 +40,71 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
         {/* //private */}
-        <Route path="/category" element={<Category />}></Route>
-        <Route path="/customer" element={<Customers />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-        <Route path="/payment" element={<PaymentOptions />}></Route>
-        <Route path="/product" element={<Product />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/orders" element={<Orders />}></Route>
-        <Route path="/reviews" element={<Reviews />}></Route>
+
+        <Route
+          path="/category"
+          element={
+            <PrivateRoute>
+              <Category />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/customer"
+          element={
+            <PrivateRoute>
+              <Customers />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/payment"
+          element={
+            <PrivateRoute>
+              <PaymentOptions />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/product"
+          element={
+            <PrivateRoute>
+              <Product />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/orders"
+          element={
+            <PrivateRoute>
+              <Orders />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/reviews"
+          element={
+            <PrivateRoute>
+              <Reviews />
+            </PrivateRoute>
+          }
+        ></Route>
       </Routes>
     </div>
   );

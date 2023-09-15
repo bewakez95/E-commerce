@@ -8,11 +8,11 @@ function AdminLayout({ children, title }) {
     <div>
       <Header />
       <div className="admin-layout d-flex">
-        <div className="left">
+        <div className="left w-40">
           <Sidebar />
         </div>
-        <div className="right">
-          <h1 className="p-3">{title}</h1>
+        <div className="right flex-grow-1 p-3">
+          <h1 className="">{title}</h1>
           <main className="main">{children}</main>
         </div>
       </div>

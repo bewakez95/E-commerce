@@ -4,7 +4,7 @@ import AdminLayout from "../../components/layouts/AdminLayout";
 function Dashboard() {
   return (
     <AdminLayout title="Dashboard">
-      <div>Dashboard</div>
+      <div style={{ height: "100vh" }}>Dashboard</div>
     </AdminLayout>
   );
 }
