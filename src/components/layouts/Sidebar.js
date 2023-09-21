@@ -33,8 +33,8 @@ function Sidebar() {
       <div className="text-center p-4">Admin Account</div>
       <hr />
       <ul className="list-unstyled">
-        {sidelink.map(({ label, path }) => (
-          <li className="ms-5 py-2">
+        {sidelink.map(({ label, path }, i) => (
+          <li className="ms-5 py-2" key={i}>
             <Link className="nav-link" to={path}>
               {label}
             </Link>

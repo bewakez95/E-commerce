@@ -52,7 +52,7 @@ export const getUserInfo = (uid) => async (dispatch) => {
   //   console.log(uid);
   try {
     const userSnap = await getDoc(doc(db, "users", uid));
-    console.log(userSnap);
+    // console.log(userSnap);
     if (userSnap.exists()) {
       const userData = userSnap.data();
       dispatch(setUser({ ...userData, uid }));
