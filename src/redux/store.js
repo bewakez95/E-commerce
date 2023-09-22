@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import persistReducer from "redux-persist/es/persistReducer";
 import userReducer from "./auth/userSlice";
 import systemReducer from "./systemState/systemSlice";
 import categoryReducer from "../pages/category/categorySlice";
@@ -16,8 +16,8 @@ const persistConfig = {
   storage,
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
-const store = configureStore({
+export const store = configureStore({
   reducer: persistedReducer,
 });
 
-export default store;
+// export default store;

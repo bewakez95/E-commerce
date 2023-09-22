@@ -32,17 +32,22 @@ export const AddCategory =
       toast.error(e.message);
     }
   };
+
 export const getCategories = () => async (dispatch) => {
   try {
     const querySnapshot = await getDocs(collection(db, "categories"));
     const catList = [];
+    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       const slug = doc.id;
-      const data = doc.data;
+      console.log(doc);
+      const document = doc.data(); //Error solved
+      // console.log(document);
       catList.push({
-        ...data,
+        ...document,
         slug,
       });
+      console.log(catList);
       //   console.log(`${doc.id} => ${doc.data()}`);
     });
     dispatch(setCategoryList(catList));

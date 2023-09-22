@@ -35,6 +35,7 @@ function NewCategory() {
       ...form,
       slug: slugify(form.name, { lower: true, trim: true }), // some-string
     };
+    console.log(catObj);
     dispatch(AddCategory(catObj));
   };
   return (

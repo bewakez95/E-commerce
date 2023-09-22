@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalShow } from "../../redux/systemState/systemSlice";
@@ -13,7 +12,7 @@ function CustomModal({ children, title }) {
     <>
       <Modal show={modalShow} onHide={() => dispatch(setModalShow(false))}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>
       </Modal>

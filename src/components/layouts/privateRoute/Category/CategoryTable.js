@@ -11,19 +11,21 @@ import EditCategory from "./EditCategory";
 function CategoryTable() {
   const dispatch = useDispatch();
   const { categoryList } = useSelector((state) => state.category);
-  console.log(categoryList);
+  // console.log(categoryList);
   const handleOnEdit = (categoryDetail) => {
-    dispatch(setSelectedCategory(categoryDetail));
+    // dispatch(setSelectedCategory(categoryDetail));
+    console.log(categoryDetail);
     dispatch(setModalShow(true));
   };
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, []);
 
   return (
     <div>
       <CustomModal title="update the category">
-        <EditCategory />
+        {/* <EditCategory /> */}
+        Hello
       </CustomModal>
       <Table striped bordered hover>
         <thead>
@@ -46,7 +48,7 @@ function CategoryTable() {
                 <td>{cat.name}</td>
                 <td>{cat.slug}</td>
                 <td>
-                  <Button variant="warning" onClick={handleOnEdit(cat)}>
+                  <Button variant="warning" onClick={() => handleOnEdit(cat)}>
                     Edit
                   </Button>
                 </td>
